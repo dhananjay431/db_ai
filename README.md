@@ -1,3 +1,38 @@
+# 🚀 Running LLaMA 3.1 (8B) with Hugging Face Transformers on Google Colab
+
+This guide demonstrates how to run the **Meta LLaMA 3.1 (8B)** model using [🤗 Transformers](https://huggingface.co/docs/transformers) and the Hugging Face Hub inside **Google Colab**.
+
+---
+
+## 📦 Step 1: Install Dependencies
+Make sure you install the required libraries first:
+
+```bash
+!pip install transformers
+!pip install torch
+from huggingface_hub import login
+from google.colab import userdata
+
+# Login with your Hugging Face token
+login(userdata.get('HF_TOKEN'))
+
+import transformers
+import torch
+
+model_id = "meta-llama/Llama-3.1-8B"
+
+pipeline = transformers.pipeline(
+    "text-generation",
+    model=model_id,
+    model_kwargs={"torch_dtype": torch.bfloat16},
+    device_map="auto"
+)
+pipeline("Hey how are you doing today?")
+
+---
+
+Do you want me to also include an **“Expected Output” example section** in the README (sample generated text from the pipeline)?
+
 # Common Hugging Face Pipelines (tasks)
 
 Here are many of the standard pipelines available in 🤗 Transformers:
