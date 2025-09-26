@@ -29,7 +29,7 @@ pipeline = transformers.pipeline(
 )
 pipeline("Hey how are you doing today?")
 
----
+```
 
 Do you want me to also include an **“Expected Output” example section** in the README (sample generated text from the pipeline)?
 
